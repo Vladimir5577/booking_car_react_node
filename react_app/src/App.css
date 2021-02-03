@@ -1,0 +1,76 @@
+/*.App {
+    text-align: center;
+}
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+/***************************************************
+	Admin
+******************************************************/
+
+.admin_header {
+	height: 80px;
+	background-color: #292574;
+	display: flex;
+	align-items: center;
+	color: #fff;
+}
+
+.admin_header h1 {
+	padding-left: 30px;
+	width: 100%;
+}
+
+.admin_content {
+	display: flex;
+}
+
+.admin_sidebar {
+	width: 15%;
+	min-width: 200px;
+	background-color: #383F4F;
+	height: 100vh;
+	color: #fff;
+}
+
+.admin_sidebar li {
+	padding: 10px;
+	border: 2px solid #B3C3E3 ;
+	cursor: pointer;
+	margin: 10px;
+}
+
+.admin_sidebar li:hover {
+	background-color: #7D99D4 ;
+}
+
+.admin_container {
+	padding: 20px;
+}
+
+.car_form_input input {
+	width: 100%;
+	height: 25px;
+	padding: 6px 10px;
+	border: 2px solid #CE19A5 ;
+}
+
+.car_form_input textarea {
+	width: 100%;
+	/*height: 25px;*/
+	padding: 6px 10px;
+	border: 2px solid #CE19A5 ;
+}
+
+.car_form button {
+	padding: 6px 10px;
+	border: 2px solid #CE19A5;
+	border-radius: 5px;
+	background: #3F2EB0;
+	color: #fff;
+}
