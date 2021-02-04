@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Cars () {
 
@@ -32,6 +33,11 @@ function Cars () {
 		<div>
 			{ messageInfo && <h1>{ messageInfo }</h1> }
 			<h1>Car Database</h1>
+
+			<Link to="/admin/car_create">
+				<button className="submit_button" >Add car</button>
+			</Link>
+
 			<table border="5" cellPadding="5" celspacing="0">
 				<thead>
 					<tr>

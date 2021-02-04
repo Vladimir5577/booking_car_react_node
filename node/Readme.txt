@@ -1,6 +1,10 @@
-To install project (node module) type 
+To install project (node module after git clone) type 
 	
 	$ npm i
+
+Then create .env from .env.example
+
+	$ cp .env.example .env
 
 ================================================
 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function CarForm () {
 	
@@ -45,6 +46,13 @@ function CarForm () {
 
 	return (
 		<div className="car_form">
+
+			<h1>Form Input</h1>
+
+			<Link to="/admin/cars">
+				<button className="submit_button" >Back</button>
+			</Link>
+
 			{ previewImage && <img src={ previewImage } style={{ height: 150 }} alt="image_previews" /> }
 			<div>
 				<label>Image</label>
@@ -68,7 +76,7 @@ function CarForm () {
 			</div>
 			<br />
 			<div>
-				<button onClick={submitCreate} >Create</button>
+				<button onClick={submitCreate} className="submit_button" >Create</button>
 			</div>	
 		</div>
 	)

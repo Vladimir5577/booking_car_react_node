@@ -1,3 +1,10 @@
+Install the project after git clone
+
+	$ npm install
+
+=============================================
+
+
 Create react app:
 
 	$ npx create-react-app react_app
@@ -27,6 +34,8 @@ In the project delete:
 	In App.js remove lines
 		- import logo from './logo.svg';
 		- teg <header> completely
+
+========================
 
 In browser type:
 
