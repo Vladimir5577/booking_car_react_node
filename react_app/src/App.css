@@ -77,3 +77,39 @@
 	font-size: 20px;
 }
 
+/******************************************
+ Login page
+*******************************************/
+
+.login_page {
+	display: flex;
+	justify-content: center;
+	height: 100vh;
+	align-items: center;
+	background-color: #AAA9B0;
+}
+
+.login_input_form {
+	width: 400px;
+	height: 400px;
+	text-align: center;
+	background-color: #D4D3E1;
+	border: 3px solid #6D6C72;
+	border-radius: 10px;
+}
+
+.login_input_form h1 {
+	margin-top: 20px;
+}
+
+.login_input_form label {
+	font-size: 20px;
+}
+
+.login_input_form input {
+	width: 300px;
+	padding: 7px 10px;
+	height: 20px;
+	margin: 10px 0 30px 0;
+}
+

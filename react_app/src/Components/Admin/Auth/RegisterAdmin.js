@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
-const LoginAdmin = () => {
+const RegisterAdmin = () => {
 	return (
 		<div className="login_page">
 			<div className="login_input_form">
-				<h1>Admin Login</h1>
+				<h1>Register Admin</h1>
 				<br />
 				<label>Login</label>
 				<br />
@@ -14,17 +14,17 @@ const LoginAdmin = () => {
 				<br />
 				<input type="text" />
 				<br />
-				<button className="submit_button">Login</button>
+				<button className="submit_button">Register</button>
 				<br />
 				<br />
 
-				<Link to="/admin/register">
-					Register
+				<Link to="/admin/login">
+					Login
 				</Link>
-			
+
 			</div>
 		</div>
 	);
 };
 
-export default LoginAdmin;
+export default RegisterAdmin;
