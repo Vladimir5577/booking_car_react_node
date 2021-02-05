@@ -22,6 +22,10 @@ Create project folder and install in the project folder:
 
 	$ npm install dotenv
 
+	$ npm install bcrypt
+
+	$ npm install jsonwebtoken
+
 In package.json file in 'scripts' add
 	
 	...
@@ -41,3 +45,31 @@ To run app
 In the browser type
 
 	localhost:3001
+
+
+===============================================================
+
+Basic mongodb query:
+
+	To get into database:
+
+		$ mongo <database>
+
+	show dbs; --- show databases 
+
+	use myCustomers; --- createand switch to this database
+
+	db.createCollection('customers'); --- create collection (table for mysql)
+
+	show collections; ---  to show collections
+
+	db.customers.insert({first_name: "Bob", last_name: "Cumer"});  --- insert record to the collection
+
+	db.customers.find(); --- find all record from the collection
+
+	db.customers.remove({first_name: "Mike"});  ---  to remove the record
+
+	db.customers.remove({first_name: "Bob"}, {justOne: true});  ---  to remove only one record (limit)
+
+
+
