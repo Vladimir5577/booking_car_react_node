@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 function CarForm () {
 	
@@ -10,6 +10,7 @@ function CarForm () {
 	const [file, setFile] = useState('');
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
+	const [message, setMessage] = useState(false);
 
 	const inputFile = e => {
 		setPreviewImage(URL.createObjectURL(e.target.files[0]));
@@ -25,6 +26,8 @@ function CarForm () {
 	};
 
 	const submitCreate = async e => {
+		e.preventDefault();
+		debugger;
 		const formData = new FormData();
 		formData.append('file', file);
 		formData.append('title', title);
@@ -38,7 +41,8 @@ function CarForm () {
 					}
 				}).then((response) => {
 					console.log(response);
-				});
+				}); 
+					setMessage(true);
 		} catch (e) {
 			console.log(e);
 		}
@@ -47,11 +51,13 @@ function CarForm () {
 	return (
 		<div className="car_form">
 
-			<h1>Form Input</h1>
+			<h1>Add a car</h1>
 
-			<Link to="/admin/cars">
+			{ message && <h2 style={{ color: 'green' }}>Record created successfully</h2> }
+{/*
+			<Link to={`${path}/add_car`}>
 				<button className="submit_button" >Back</button>
-			</Link>
+			</Link>*/}
 
 			{ previewImage && <img src={ previewImage } style={{ height: 150 }} alt="image_previews" /> }
 			<div>
@@ -78,6 +84,9 @@ function CarForm () {
 			<div>
 				<button onClick={submitCreate} className="submit_button" >Create</button>
 			</div>	
+
+			
+
 		</div>
 	)
 

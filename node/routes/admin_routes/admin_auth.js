@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 
 const AdminAuth = require('../../Models/AdminAuth');
 
+/*
 const verifyJWT = (req, res, next) => {
 	const token = req.headers['x-access-token'];
 	if (!token) {
@@ -20,9 +21,10 @@ const verifyJWT = (req, res, next) => {
 		});
 	}
 };
+*/
 
 // Register admin
-router.post('/admin_register', verifyJWT, async (req, res) => {
+router.post('/admin_register', async (req, res) => {
 	// Checking ig the admin name already exist in the database
 	const adminExist = await AdminAuth.findOne({ adminName: req.body.adminNameRegister });
 	if (adminExist) return res.status(400).send('Admin already exist');
@@ -46,7 +48,7 @@ router.post('/admin_register', verifyJWT, async (req, res) => {
 });
 
 // Login Admin
-router.post('/admin_login', verifyJWT, async (req, res) => {
+router.post('/admin_login', async (req, res) => {
 	// Check if admin exist 
 	const admin = await AdminAuth.findOne({ adminName: req.body.adminNameLogin });
 	if (!admin) return res.json({ message: 'Admin user not found' });

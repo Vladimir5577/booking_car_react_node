@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch, Route } from 'react-router-dom';
+import CarForm from './CarForm';
 
 function Cars () {
 
 	const [carsData, setCarsData] = useState([]);
 	const [messageInfo, setMessageInfo] = useState('');
+	const { url, path } = useRouteMatch();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -34,8 +36,8 @@ function Cars () {
 			{ messageInfo && <h1>{ messageInfo }</h1> }
 			<h1>Car Database</h1>
 
-			<Link to="/admin/car_create">
-				<button className="submit_button" >Add car</button>
+			<Link to="/admin/add_car">
+				<button className="submit_button" >Add a car</button>
 			</Link>
 
 			<table border="5" cellPadding="5" celspacing="0">
@@ -67,6 +69,8 @@ function Cars () {
 					}
 				</tbody>
 			</table>
+
+			<Route path={ `${path}/add_car` } component={ CarForm } />
 		</div>
 	);
 }

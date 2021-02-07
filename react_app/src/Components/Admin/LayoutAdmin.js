@@ -1,11 +1,11 @@
-import CarForm from './CarForm';
-import { BrowserRouter as Router, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
 
 import IntroAdmin from './IntroAdmin';
 import UsersAdmin from './UsersAdmin';
-import Orders from './Orders';
-import Contacts from './Contacts';
-import Cars from './Cars';
+import OrdersAdmin from './OrdersAdmin';
+import ContactsAdmin from './ContactsAdmin';
+import CarsAdmin from './CarsAdmin';
+import CarForm from './CarForm';
 
 function LayoutAdmin () {
 
@@ -13,6 +13,8 @@ function LayoutAdmin () {
 		color: 'white'
 	};
 
+	const { url, path } = useRouteMatch();
+	console.log(url, path);
 	return (
 		<div>
 			<Router>
@@ -24,16 +26,16 @@ function LayoutAdmin () {
 				<div className="admin_content">
 					<div className="admin_sidebar">
 						<ul>
-							<Link to='/admin/cars/' style={ navStyle }>
+							<Link to={`${path}/cars`} style={ navStyle }>
 								<li>Cars</li>
 							</Link>
-							<Link to='/admin/users' style={ navStyle }>
+							<Link to={`${path}/users`} style={ navStyle }>
 								<li>Users</li>
 							</Link>
-							<Link to='/admin/orders' style={ navStyle }>
+							<Link to={`${path}/orders`} style={ navStyle }>
 								<li>Orders</li>
 							</Link>
-							<Link to='/admin/contacts' style={ navStyle }>
+							<Link to={`${path}/contacts`} style={ navStyle }>
 								<li>Contacts</li>
 							</Link>
 						</ul>
@@ -41,11 +43,17 @@ function LayoutAdmin () {
 					<div className="admin_container">
 						<Switch>
 							<IntroAdmin exact path="/admin" />
-							<Cars path="/admin/cars" />
-							<CarForm path="/admin/car_create" />
-							<UsersAdmin path="/admin/users" />
-							<Orders path="/admin/orders" />
-							<Contacts path="/admin/contacts" />
+							<Route path={ `${path}/cars` } component={ CarsAdmin } >
+							</Route>
+							<Route path={ `${path}/users` } component={ UsersAdmin } >
+							</Route>
+							<Route path={ `${path}/orders` } component={ OrdersAdmin } >
+							</Route>
+							<Route path={ `${path}/contacts` } component={ ContactsAdmin } >
+							</Route>
+							<Route path={ `${path}/add_car` } component={ CarForm } >
+							</Route>
+
 						</Switch>
 					</div>
 				</div>

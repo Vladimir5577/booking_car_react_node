@@ -3,8 +3,25 @@ const Router = require('express');
 const Car = require('../../Models/Car');
 const carAdminRouter = Router();
 
+const verifyJWT = (req, res, next) => {
+	const token = req.headers['x-access-token'];
+	if (!token) {
+		res.send('Hey we need a token, please give it to us next time!');
+	} else {
+		jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
+			if (err) {
+				res.json({ auth: false, message: 'You failed to authenticate !' });
+			} else { 
+				req.userId = decoded.id;
+				next();
+			}
+		});
+	}
+};
+
+
 // Get cars
-carAdminRouter.get('/get_cars', async (req, res) => {
+carAdminRouter.get('/get_cars',  async (req, res) => {
 	const cars = await Car.find({});
 	res.send(cars);
 });

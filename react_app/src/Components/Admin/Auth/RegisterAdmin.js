@@ -34,7 +34,7 @@ const RegisterAdmin = () => {
 				<br />
 				<br />
 
-				<Link to="/admin/login">
+				<Link to="/">
 					Login
 				</Link>
 
