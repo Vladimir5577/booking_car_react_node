@@ -23,11 +23,6 @@ const LoginAdmin = () => {
 		});
 	};
 
-	// redirect to admin panel if logged in
-	if (adminLoginStatus) {
-		return <Redirect to="/admin" />;
-	}
-
 	return (
 		<div className="login_page">
 			<div className="login_input_form">

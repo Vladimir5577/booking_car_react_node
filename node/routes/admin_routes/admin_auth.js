@@ -51,25 +51,28 @@ router.post('/admin_register', async (req, res) => {
 router.post('/admin_login', async (req, res) => {
 	// Check if admin exist 
 	const admin = await AdminAuth.findOne({ adminName: req.body.adminNameLogin });
-	if (!admin) return res.json({ message: 'Admin user not found' });
+	if (!admin) return res.send({ message: 'Admin user not found' });
 
 	// Verify password
 	const validPassword = await bcrypt.compare(req.body.adminPasswordLogin, admin.adminPassword);
-	if (!validPassword) return res.json({ message: 'Wrong password' });
+	if (!validPassword) return res.send({ message: 'Wrong password' });
 
 	// Create and assign token
 	const token = jwt.sign({ _id: admin._id }, process.env.TOKEN_SECRET);
-	res.json({ auth: true, token: token, message: 'You are logged in !' });
+	res.send({ auth: true, token: token, message: 'You are logged in !' });
 });
 
 // verify token 
-router.get('/verify_token', async (req, res, next) => {
+router.get('/verify_token', async (req, res) => {
 	const token = req.headers['x-access-token'];
+	if (!token) {
+		res.send({ auth: false, message: 'Prease give a token' });
+	}
 	const ver = jwt.verify(token, process.env.TOKEN_SECRET, (err, decode) => {
 		if (err) {
-			res.json({ auth: false, message: 'You failed to authenticate !' });
+			res.send({ auth: false, message: 'You failed to authenticate !' });
 		} else {
-			res.json({ auth: true, message: 'You are authenticated !' });
+			res.send({ auth: true, message: 'You are authenticated !' });
 		}
 	});
 });
