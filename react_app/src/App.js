@@ -12,23 +12,26 @@ import ProtectedRoute from './Components/Admin/Auth/ProtectedRoute';
 // admin panel
 import LayoutAdmin from './Components/Admin/LayoutAdmin';
 
+// Client 
+import LayoutClient from './Components/Client/LayoutClient';
+
 
 function App() {
 
-	const [loginStatus, setLoginStatus] = useState(false);
+	const [loginStatus, setLoginStatus] = useState(true);
 
-	const checkLogin = () => {
-		axios.get('http://localhost:3001/admin/auth/verify_token', {
-			headers: {
-				'x-access-token': localStorage.getItem('token')
-			}
-		}).then((response) => {
-			console.log(response.data.auth, 'auth from Promise');
-			setLoginStatus(response.data.auth);
-		});
-	};
+	// const checkLogin = () => {
+	// 	axios.get('http://localhost:3001/admin/auth/verify_token', {
+	// 		headers: {
+	// 			'x-access-token': localStorage.getItem('token')
+	// 		}
+	// 	}).then((response) => {
+	// 		console.log(response.data.auth, 'auth from Promise');
+	// 		setLoginStatus(response.data.auth);
+	// 	});
+	// };
 
-	checkLogin();
+	// checkLogin();
 
 console.log(loginStatus, 'bla');
 
@@ -37,7 +40,7 @@ console.log(loginStatus, 'bla');
   	<Router>
 	    <div className="App">
 		    <Switch>
-		    	<Route path="/" exact component={ LoginAdmin } />
+		    	<Route path="/" exact component={ LayoutClient } />
 		     	<Route path="/admin/register" exact component={ RegisterAdmin } />
 		     	{/*<SecureRoute path="/admin" component={ LayoutAdmin } />*/}
 		     	<ProtectedRoute path="/admin" component={ LayoutAdmin } isAuth={ loginStatus } />

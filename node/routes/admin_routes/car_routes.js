@@ -29,7 +29,7 @@ carAdminRouter.get('/get_cars',  async (req, res) => {
 // add a car
 carAdminRouter.post('/add_car', async (req, res) => {
 	const file = req.files.file;
-	file.mv(`${__dirname}/../../../react_app/public/uploads/${file.name}`, err => {
+	file.mv(`${__dirname}/../../../react_app/images/${file.name}`, err => {
 		if (err) {
 			console.log(err);
 			return res.status(500).send(err);
@@ -46,6 +46,36 @@ carAdminRouter.post('/add_car', async (req, res) => {
 	res.json({ message: 'Car added successfully' });
 });
 
+// Edit car
+carAdminRouter.patch('/update_car/:id', async (req, res) => {
+
+	if (req.files !== null) {
+		const file = req.files.file;
+			file.mv(`${__dirname}/../../../react_app/images/${file.name}`, err => {
+			if (err) {
+				console.log(err);
+				return res.status(500).send(err);
+			}
+		});
+
+		const car = await Car.findByIdAndUpdate({ _id: req.params.id }, {
+			image: req.files.file.name,
+			title: req.body.title,
+			description: req.body.description
+		});
+
+		res.json({ message: 'Post updated successfully' });
+	} else {
+		const car = await Car.findByIdAndUpdate({ _id: req.params.id }, {
+			title: req.body.title,
+			description: req.body.description
+		});
+
+		res.json({ message: 'Post updated successfully' });
+	}
+
+});
+ 
 // Delete car
 carAdminRouter.get('/delete/:id', async (req, res) => {
 	console.log(req.params.id);

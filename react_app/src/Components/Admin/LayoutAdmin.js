@@ -6,6 +6,7 @@ import OrdersAdmin from './OrdersAdmin';
 import ContactsAdmin from './ContactsAdmin';
 import CarsAdmin from './CarsAdmin';
 import CarForm from './CarForm';
+import EditCar from './EditCar';
 
 function LayoutAdmin () {
 
@@ -52,6 +53,8 @@ function LayoutAdmin () {
 							<Route path={ `${path}/contacts` } component={ ContactsAdmin } >
 							</Route>
 							<Route path={ `${path}/add_car` } component={ CarForm } >
+							</Route>
+							<Route path={ `${path}/edit_car` } component={ EditCar } >
 							</Route>
 
 						</Switch>

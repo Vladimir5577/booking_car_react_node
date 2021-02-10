@@ -10,6 +10,41 @@
 }
 
 /***************************************************
+	Client
+****************************************************/
+
+.header {
+	height: 80px;
+	background-color: #292574;
+	display: flex;
+	align-items: center;
+	color: #fff;
+	
+}
+
+.container {
+	width: 80%;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.auth_user_button {
+	font-size: 18px;
+	padding: 5px 20px;
+	margin: 0 10px;
+	border-radius: 5px;
+	background: #9EEAA3;
+}
+
+.auth_user_button:hover {
+	background: #45AD66;
+}
+
+
+
+/***************************************************
 	Admin
 ******************************************************/
 

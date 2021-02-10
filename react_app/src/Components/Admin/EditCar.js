@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Link, Route } from 'react-router-dom';
+// import { Link, Route } from 'react-router-dom';
 
-function CarForm () {
-	
-	const [previewImage, setPreviewImage] = useState('');
+function EditCar (props) {
 
-	// inpu group
+	const [previewImage, setPreviewImage] = useState(props.location.image);
+
+	// input group
 	const [file, setFile] = useState('');
-	const [title, setTitle] = useState('');
-	const [description, setDescription] = useState('');
+	const [title, setTitle] = useState(props.location.car.title);
+	const [description, setDescription] = useState(props.location.car.description);
 	const [message, setMessage] = useState(false);
 
 	const inputFile = e => {
@@ -25,15 +25,22 @@ function CarForm () {
 		setDescription(e.target.value);
 	};
 
-	const submitCreate = async e => {
+	const submitUpdate = async e => {
 		e.preventDefault();
+		const id = props.location.car._id;
+
 		const formData = new FormData();
-		formData.append('file', file);
+
+		if (file) {
+			setFile(file);
+			formData.append('file', file);
+		} 
+
 		formData.append('title', title);
 		formData.append('description', description);
 
 		try {
-			await axios.post('http://localhost:3001/admin/car/add_car', 
+			await axios.patch('http://localhost:3001/admin/car/update_car/' + id, 
 				formData, {
 					headers: {
 						'Content-Type': 'multipart/form-data'
@@ -50,9 +57,9 @@ function CarForm () {
 	return (
 		<div className="car_form">
 
-			<h1>Add a car</h1>
+			<h1>Edit a car</h1>
 
-			{ message && <h2 style={{ color: 'green' }}>Record created successfully</h2> }
+			{ message && <h2 style={{ color: 'green' }}>Record updated successfully</h2> }
 {/*
 			<Link to={`${path}/add_car`}>
 				<button className="submit_button" >Back</button>
@@ -70,18 +77,18 @@ function CarForm () {
 				<label>Title</label>
 			</div>	
 			<div className="car_form_input" >
-				<input type="text" onChange={inputTitle} />
+				<input type="text" value={title} onChange={inputTitle} />
 			</div>
 			<br />
 			<div>
 				<label>Description</label>
 			</div>	
 			<div className="car_form_input">
-				<textarea rows="10" onChange={inputDescription} ></textarea>
+				<textarea rows="10" value={description} onChange={inputDescription} ></textarea>
 			</div>
 			<br />
 			<div>
-				<button onClick={submitCreate} className="submit_button" >Create</button>
+				<button onClick={submitUpdate} className="submit_button" >Edit</button>
 			</div>	
 
 			
@@ -91,4 +98,4 @@ function CarForm () {
 
 }
 
-export default CarForm;
+export default EditCar;

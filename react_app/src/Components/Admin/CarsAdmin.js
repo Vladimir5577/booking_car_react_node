@@ -19,7 +19,7 @@ function Cars () {
 	}, []);
 
 	// Edit
-	const editCar = async id => {
+	const editCar = async (id, image_path) => {
 
 	};
 
@@ -53,14 +53,20 @@ function Cars () {
 				<tbody>
 					{
 						carsData.map(car => {
-							let image_path = 'http://localhost:3000/uploads/' + car.image;
+							let image_path = 'http://localhost:3000/../images/' + car.image;
 							return (
 								<tr key={ car._id } >
 									<td><img src={ image_path } style={{ height: 100 }} alt="img" /></td>
 									<td>{ car.title }</td>
 									<td>{ car.description }</td>
 									<td>
-										<button onClick={e => editCar(car._id, image_path)} >Edit</button>
+										<Link to={{
+											pathname: "/admin/edit_car",
+											car: car,
+											image: image_path
+										}} >
+											<button onClick={e => editCar(car._id, image_path)} >Edit</button>
+										</Link>
 										<button onClick={ e => deleteCar(car._id) } >Delete</button>
 									</td>
 								</tr>
