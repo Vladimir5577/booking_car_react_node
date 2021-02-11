@@ -7,6 +7,7 @@ import ContactsAdmin from './ContactsAdmin';
 import CarsAdmin from './CarsAdmin';
 import CarForm from './CarForm';
 import EditCar from './EditCar';
+import ModelsCarsAdmin from './ModelsCarsAdmin';
 
 function LayoutAdmin () {
 
@@ -30,6 +31,9 @@ function LayoutAdmin () {
 							<Link to={`${path}/cars`} style={ navStyle }>
 								<li>Cars</li>
 							</Link>
+							<Link to={`${path}/models`} style={ navStyle }>
+								<li>Models</li>
+							</Link>
 							<Link to={`${path}/users`} style={ navStyle }>
 								<li>Users</li>
 							</Link>
@@ -39,12 +43,15 @@ function LayoutAdmin () {
 							<Link to={`${path}/contacts`} style={ navStyle }>
 								<li>Contacts</li>
 							</Link>
+
 						</ul>
 					</div>
 					<div className="admin_container">
 						<Switch>
 							<IntroAdmin exact path="/admin" />
 							<Route path={ `${path}/cars` } component={ CarsAdmin } >
+							</Route>
+							<Route path={ `${path}/models` } component={ ModelsCarsAdmin } >
 							</Route>
 							<Route path={ `${path}/users` } component={ UsersAdmin } >
 							</Route>

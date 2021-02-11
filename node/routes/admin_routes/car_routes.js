@@ -29,7 +29,7 @@ carAdminRouter.get('/get_cars',  async (req, res) => {
 // add a car
 carAdminRouter.post('/add_car', async (req, res) => {
 	const file = req.files.file;
-	file.mv(`${__dirname}/../../../react_app/images/${file.name}`, err => {
+	file.mv(`${__dirname}/../../../react_app/public/uploads/${file.name}`, err => {
 		if (err) {
 			console.log(err);
 			return res.status(500).send(err);
@@ -51,7 +51,7 @@ carAdminRouter.patch('/update_car/:id', async (req, res) => {
 
 	if (req.files !== null) {
 		const file = req.files.file;
-			file.mv(`${__dirname}/../../../react_app/images/${file.name}`, err => {
+			file.mv(`${__dirname}/../../../react_app/public/uploads/${file.name}`, err => {
 			if (err) {
 				console.log(err);
 				return res.status(500).send(err);
@@ -83,5 +83,8 @@ carAdminRouter.get('/delete/:id', async (req, res) => {
 	await car.delete();
 	res.json({ message: 'Record has been deleted successfully' });
 });
+
+
+
 
 module.exports = carAdminRouter;

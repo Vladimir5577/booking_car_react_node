@@ -12,10 +12,12 @@ app.use(express.json());
 // Routes 
 const carAdminRouter = require('./routes/admin_routes/car_routes');
 const adminAuthRouter = require('./routes/admin_routes/admin_auth');
+const carModelRouter = require('./routes/admin_routes/car_routes');
 
 
 app.use('/admin/car/', carAdminRouter);
 app.use('/admin/auth', adminAuthRouter);
+app.use('/admin/car_models/', carModelRouter);
 
 app.listen(3001, () => {
 	console.log('Server up and running on the port 3001');
