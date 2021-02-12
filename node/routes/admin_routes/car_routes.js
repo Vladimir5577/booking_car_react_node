@@ -28,8 +28,9 @@ carAdminRouter.get('/get_cars',  async (req, res) => {
 
 // add a car
 carAdminRouter.post('/add_car', async (req, res) => {
+	// console.log(req.body);
 	const file = req.files.file;
-	file.mv(`${__dirname}/../../../react_app/public/uploads/${file.name}`, err => {
+	file.mv(`${__dirname}/../../uploads/${file.name}`, err => {
 		if (err) {
 			console.log(err);
 			return res.status(500).send(err);
@@ -38,6 +39,7 @@ carAdminRouter.post('/add_car', async (req, res) => {
 
 	const car = new Car({
 		image: req.files.file.name,
+		model: req.body.model,
 		title: req.body.title,
 		description: req.body.description
 	});
@@ -51,7 +53,7 @@ carAdminRouter.patch('/update_car/:id', async (req, res) => {
 
 	if (req.files !== null) {
 		const file = req.files.file;
-			file.mv(`${__dirname}/../../../react_app/public/uploads/${file.name}`, err => {
+			file.mv(`${__dirname}/../../uploads/${file.name}`, err => {
 			if (err) {
 				console.log(err);
 				return res.status(500).send(err);
@@ -60,6 +62,7 @@ carAdminRouter.patch('/update_car/:id', async (req, res) => {
 
 		const car = await Car.findByIdAndUpdate({ _id: req.params.id }, {
 			image: req.files.file.name,
+			model: req.body.model,
 			title: req.body.title,
 			description: req.body.description
 		});
@@ -67,6 +70,7 @@ carAdminRouter.patch('/update_car/:id', async (req, res) => {
 		res.json({ message: 'Post updated successfully' });
 	} else {
 		const car = await Car.findByIdAndUpdate({ _id: req.params.id }, {
+			model: req.body.model,
 			title: req.body.title,
 			description: req.body.description
 		});

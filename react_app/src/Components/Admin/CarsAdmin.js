@@ -44,6 +44,7 @@ function Cars () {
 				<thead>
 					<tr>
 						<td>Image</td>
+						<td>Model</td>
 						<td>Title</td>
 						<td>Description</td>
 						<td></td>
@@ -53,10 +54,11 @@ function Cars () {
 				<tbody>
 					{
 						carsData.map(car => {
-							let image_path = 'http://localhost:3000/uploads/' + car.image;
+							let image_path = 'http://localhost:3001/uploads/' + car.image;
 							return (
 								<tr key={ car._id } >
 									<td><img src={ image_path } style={{ height: 100 }} alt="img" /></td>
+									<td>{ car.model }</td>
 									<td>{ car.title }</td>
 									<td>{ car.description }</td>
 									<td>

@@ -9,15 +9,17 @@ app.use(cors());
 app.use(fileUpload());
 app.use(express.json());
 
+app.use('/uploads', express.static('uploads'));
+
 // Routes 
 const carAdminRouter = require('./routes/admin_routes/car_routes');
 const adminAuthRouter = require('./routes/admin_routes/admin_auth');
-const carModelRouter = require('./routes/admin_routes/car_routes');
+const modelAdminRouter = require('./routes/admin_routes/car_models');
 
 
 app.use('/admin/car/', carAdminRouter);
 app.use('/admin/auth', adminAuthRouter);
-app.use('/admin/car_models/', carModelRouter);
+app.use('/admin/car_models/', modelAdminRouter);
 
 app.listen(3001, () => {
 	console.log('Server up and running on the port 3001');

@@ -5,6 +5,10 @@ const schema = new Schema({
 		type: String,
 		require: true
 	},
+	model: {
+		type: String,
+		require: true
+	},
 	title: {
 		type: String,
 		require: true
