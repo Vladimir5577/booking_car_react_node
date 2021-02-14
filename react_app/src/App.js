@@ -2,7 +2,13 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import './App.css';
+// Css
+import './css/1_main.css';
+import './css/2_admin_login.css';
+import './css/3_admin.css';
+import './css/4_client.css';
+import './css/5_client_main.css';
+
 // auth components
 import LoginAdmin from './Components/Admin/Auth/LoginAdmin';
 // import RegisterAdmin from './Components/Admin/Auth/RegisterAdmin';

@@ -1,0 +1,22 @@
+.card {
+	/*border: 3px solid green;*/
+	display: flex;
+	margin: 15px 0;
+}
+
+.card_image {
+	/*border: 3px solid red;*/
+	width: 300px;
+}
+
+.card_image img {
+	width: 300px;
+}
+
+.card_text {
+	padding: 20px;
+}
+
+.card_text h2 {
+	padding: 10px;
+}

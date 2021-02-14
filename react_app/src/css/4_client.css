@@ -1,0 +1,32 @@
+/***************************************************
+	Client
+****************************************************/
+
+.header {
+	height: 80px;
+	background-color: #292574;
+	display: flex;
+	align-items: center;
+	color: #fff;
+	
+}
+
+.container {
+	width: 80%;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.nav_button {
+	font-size: 16px;
+	color: #fff;
+	margin: 0 10px;
+	text-decoration: none;
+}
+
+.nav_button:hover {
+	padding-bottom: 3px;
+	border-bottom: 4px solid red;
+}
