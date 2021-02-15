@@ -116,7 +116,7 @@ const Contacts = () => {
 				<button onClick={submitCreate} className="submit_button" >Submit</button>
 			</div>	
 
-			<table cellspacing="8">
+			<table cellSpacing="8">
 				<thead>
 					<tr>
 						<td>Key</td>

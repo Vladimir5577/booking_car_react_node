@@ -77,7 +77,7 @@ const ModelsCarsAdmin = () => {
 			<br />
 			<br />
 
-			<table cellspacing="8">
+			<table cellSpacing="8">
 				<thead>
 					<tr>
 						<td>Model</td>

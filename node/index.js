@@ -19,6 +19,7 @@ const contactsAdminRouter = require('./routes/admin_routes/contacts_admin');
 
 // Client Routes
 const carClientRouter = require('./routes/client_routes/cars_clients');
+const contactsClientRouter = require('./routes/client_routes/contacts_client');
 
 // admin
 app.use('/admin/car/', carAdminRouter);
@@ -28,6 +29,8 @@ app.use('/admin/contacts/', contactsAdminRouter);
 
 // client
 app.use('/client/car/', carClientRouter);
+app.use('/client/contacts/', contactsClientRouter);
+
 
 app.listen(3001, () => {
 	console.log('Server up and running on the port 3001');

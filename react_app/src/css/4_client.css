@@ -19,6 +19,14 @@
 	justify-content: space-between;
 }
 
+.body_container {
+	width: 80%;
+	margin: auto;
+	/*display: flex;*/
+	/*align-items: center;*/
+	/*justify-content: space-between;*/
+}
+
 .nav_button {
 	font-size: 16px;
 	color: #fff;

@@ -8,6 +8,7 @@ import './css/2_admin_login.css';
 import './css/3_admin.css';
 import './css/4_client.css';
 import './css/5_client_main.css';
+import './css/6_contacts_client.css';
 
 // auth components
 import LoginAdmin from './Components/Admin/Auth/LoginAdmin';
@@ -41,7 +42,7 @@ function App() {
 		checkLogin();
 	}, []);
 
-
+/*
 	const checkLogin = () => {
 		axios.get('http://localhost:3001/admin/auth/verify_token', {
 			headers: {
@@ -54,7 +55,7 @@ function App() {
 	};
 
 	checkLogin();
-
+*/
 // console.log(loginStatus, 'bla');
 
 

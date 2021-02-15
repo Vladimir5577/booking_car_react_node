@@ -12,6 +12,7 @@ const MainClient = () => {
 			setCarsData(result.data);
 		};
 		fetchData();
+		console.log('Data from useEffect 123');
 	}, []);
 
 	return (
@@ -24,11 +25,11 @@ const MainClient = () => {
 					let image_path = 'http://localhost:3001/uploads/' + car.image;
 
 					return (
-						<div className="card">
-							<div class="card_image">
+						<div className="card" key={car._id} >
+							<div className="card_image">
 								<img src={ image_path } />
 							</div>
-							<div class="card_text">
+							<div className="card_text">
 								<h2>Model: { car.model }</h2>
 								<h3>Car: { car.title }</h3>
 								<p>{ car.description }</p>

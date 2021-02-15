@@ -36,7 +36,7 @@ const LayoutClient = () => {
 				</div>
 			</div>
 			<div className="body">
-				<div className="container">
+				<div className="body_container">
 			{/*		<div>
 						<h1>On our web site you can rent any awailable car</h1>
 					</div>*/}
