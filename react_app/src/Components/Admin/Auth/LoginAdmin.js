@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
-const LoginAdmin = () => {
+const LoginAdmin = props => {
 
 	const [adminNameLogin, setAdminNameLogin] = useState('');
 	const [adminPasswordLogin, setAdminPasswordLogin] = useState('');
@@ -17,11 +17,16 @@ const LoginAdmin = () => {
 			setErrorAuth(response.data.message);
 			if (response.data.auth) {
 				setAdminLoginStatus(true);
+				props.setLoginStatus(response.data.auth);
 				localStorage.setItem('token', response.data.token);
 			}
 			console.log(response.data);
 		});
 	};
+
+	if (props.loginStatus) {
+		return <Redirect to="/admin" />;
+	}
 
 	return (
 		<div className="login_page">

@@ -21,7 +21,7 @@ Install :
 In the project delete:
 
 		- App.test.js
-		- index.css
+		- index.css or App.css
 		- logo.svg
 		- reportWebVitals.js
 		- setupTest.js

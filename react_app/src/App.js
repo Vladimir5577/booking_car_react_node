@@ -25,11 +25,11 @@ import LayoutClient from './Components/Client/LayoutClient';
 
 function App() {
 
-	const [loginStatus, setLoginStatus] = useState(true);
+	const [loginStatus, setLoginStatus] = useState(false);
 
 	useEffect(() => {
 		const checkLogin = () => {
-			axios.get('http://localhost:3001/admin/auth/verify_token', {
+			const authResponse = axios.get('http://localhost:3001/admin/auth/verify_token', {
 				headers: {
 					'x-access-token': localStorage.getItem('token')
 				}
@@ -37,26 +37,12 @@ function App() {
 				console.log(response.data.auth, 'auth from Promise');
 				setLoginStatus(response.data.auth);
 			});
+
+			console.log(authResponse, 'auth response');
 		};
 
 		checkLogin();
 	}, []);
-
-/*
-	const checkLogin = () => {
-		axios.get('http://localhost:3001/admin/auth/verify_token', {
-			headers: {
-				'x-access-token': localStorage.getItem('token')
-			}
-		}).then((response) => {
-			console.log(response.data.auth, 'auth from Promise');
-			setLoginStatus(response.data.auth);
-		});
-	};
-
-	checkLogin();
-*/
-// console.log(loginStatus, 'bla');
 
 
   return (
@@ -65,8 +51,10 @@ function App() {
 		    <Switch>
 		    	<Route path="/" exact component={ LayoutClient } />
 		     	{/*<SecureRoute path="/admin" component={ LayoutAdmin } />*/}
-		     	<Route path="/admin/login" exact component={ LoginAdmin } />
-		     	<ProtectedRoute path="/admin" component={ LayoutAdmin } isAuth={ loginStatus } />
+		     	<Route path="/admin/login" component={ () => <LoginAdmin loginStatus={loginStatus} setLoginStatus={setLoginStatus}  /> } />
+		     	<Route exect path="/admin" component={ () => <LayoutAdmin loginStatus={loginStatus} setLoginStatus={setLoginStatus} /> } />
+		     	{/* Protected adimin route not good */}
+		     	{/*<ProtectedRoute path="/admin" component={ LayoutAdmin } isAuth={ loginStatus } />*/}
 		     </Switch>
 	    </div>
     </Router>

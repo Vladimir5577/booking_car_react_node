@@ -20,6 +20,7 @@ const contactsAdminRouter = require('./routes/admin_routes/contacts_admin');
 // Client Routes
 const carClientRouter = require('./routes/client_routes/cars_clients');
 const contactsClientRouter = require('./routes/client_routes/contacts_client');
+const authClientRouter = require('./routes/client_routes/auth_client');
 
 // admin
 app.use('/admin/car/', carAdminRouter);
@@ -30,6 +31,7 @@ app.use('/admin/contacts/', contactsAdminRouter);
 // client
 app.use('/client/car/', carClientRouter);
 app.use('/client/contacts/', contactsClientRouter);
+app.use('/client/auth/', authClientRouter);
 
 
 app.listen(3001, () => {

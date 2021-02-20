@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch, Redirect } from 'react-router-dom';
 
 import IntroAdmin from './IntroAdmin';
 import UsersAdmin from './UsersAdmin';
@@ -9,14 +9,23 @@ import CarForm from './CarForm';
 import EditCar from './EditCar';
 import ModelsCarsAdmin from './ModelsCarsAdmin';
 
-function LayoutAdmin () {
+function LayoutAdmin (props) {
 
 	const navStyle = {
-		color: 'white'
+		color: 'white',
+		textDecoration: 'none'
+	};
+
+	const logout = () => {
+		localStorage.clear()
+	    props.setLoginStatus(false);
 	};
 
 	const { url, path } = useRouteMatch();
 	console.log(url, path);
+
+	if (props.loginStatus) {
+
 	return (
 		<div>
 			<Router>
@@ -24,6 +33,7 @@ function LayoutAdmin () {
 					<Link to="/admin" style={ navStyle }>
 						<h1>Admin Panel</h1>
 					</Link>
+					<p className="logout_button" onClick={logout} >Logout</p>
 				</div>
 				<div className="admin_content">
 					<div className="admin_sidebar">
@@ -70,6 +80,10 @@ function LayoutAdmin () {
 			</Router>
 		</div>
 	);
+
+	} else {
+		return <Redirect to="/admin/login" />
+	}
 }
 
 export default LayoutAdmin;

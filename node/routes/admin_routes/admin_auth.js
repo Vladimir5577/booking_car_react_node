@@ -25,7 +25,7 @@ const verifyJWT = (req, res, next) => {
 
 // Register admin
 router.post('/admin_register', async (req, res) => {
-	// Checking ig the admin name already exist in the database
+	// Checking if the admin name already exist in the database
 	const adminExist = await AdminAuth.findOne({ adminName: req.body.adminNameRegister });
 	if (adminExist) return res.status(400).send('Admin already exist');
 

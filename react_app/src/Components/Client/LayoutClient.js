@@ -4,7 +4,8 @@ import MainClient from './MainClient';
 import HomeClient from './HomeClient';
 import ContactsClient from './ContactsClient';
 import AboutClient from './AboutClient';
-
+import LoginClient from './Auth/LoginClient';
+import RegisterClient from './Auth/RegisterClient';
  
 const LayoutClient = () => {
 
@@ -29,7 +30,7 @@ const LayoutClient = () => {
 						<Link to={`${path}contacts`} className="nav_button">
 							Contacts
 						</Link>
-						<Link to="/login" className="nav_button">
+						<Link to={`${path}login`} className="nav_button">
 							Login
 						</Link>
 					</div>
@@ -46,6 +47,8 @@ const LayoutClient = () => {
 						<Route path={`${path}home`} component={ HomeClient } ></Route>
 						<Route path={`${path}about`} component={ AboutClient } ></Route>
 						<Route path={`${path}contacts`} component={ ContactsClient } ></Route>
+						<Route path={`${path}login`} component={ LoginClient } ></Route>
+						<Route path={`${path}register`} component={ RegisterClient } ></Route>
 					</Switch>
 				</div>
 			</div>
