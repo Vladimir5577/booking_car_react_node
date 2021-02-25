@@ -12,7 +12,18 @@ const schema = new Schema({
 	password: {
 		type: String,
 		require: true
+	},
+	rentCar: {
+		type: String
 	}
 });
+
+/*
+schema.methods.toJson = function () {
+	const myData = this.toObject();
+	myData.toString();
+	return myData;
+};
+*/
 
 module.exports = model('User', schema);

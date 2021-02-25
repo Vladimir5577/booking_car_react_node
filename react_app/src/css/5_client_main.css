@@ -1,5 +1,5 @@
 .card {
-	/*border: 3px solid green;*/
+	border: 1px solid green;
 	display: flex;
 	margin: 15px 0;
 }
@@ -19,4 +19,18 @@
 
 .card_text h2 {
 	padding: 10px;
+}
+
+.order_button {
+	border: 3px solid #E719C1;
+	border-radius: 5px;
+	padding: 5px 20px;
+	font-size: 19px;
+	background: #BFC8E0;
+}
+
+.order_button:hover {
+	background: #34436F;
+	color: #fff;
+	cursor: pointer;
 }

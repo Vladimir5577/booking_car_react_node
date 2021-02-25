@@ -38,7 +38,7 @@ const RegisterClient = () => {
 			<br />
 			<button onClick={userRegister} >Register</button>
 			<br />
-			<p>Don't have an account</p>
+			<p>Already have an account</p>
 			<Link to="/login">Login</Link>
 		</div>
 	</div>

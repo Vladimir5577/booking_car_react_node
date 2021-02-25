@@ -6,6 +6,7 @@ const userAuthRouter = Router();
 
 const User = require('../../Models/ClientAuth');
 
+// Register
 userAuthRouter.post('/client_register', async (req, res) => {
 	// console.log(req.body);
 
@@ -28,8 +29,27 @@ userAuthRouter.post('/client_register', async (req, res) => {
 	res.json({ message: 'You are register successfully' });
 });
 
+// Login 
+userAuthRouter.post('/client_login', async (req, res) => {
+	// console.log(req.body);	
+
+	// Check if user exist
+	const user = await User.findOne({ email: req.body.email });
+	if (!user) return res.send({ message: 'User not found' });
+
+	// Verify password
+	const validPassword = await bcrypt.compare(req.body.password, user.password);
+	if (!validPassword) return res.send({ message: 'Wrong Password' });
+
+	// Create and assign token
+	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+	res.send({ auth: true, token: token, message: 'You are logged in !', userName: user.name, userEmail: user.email, userRentCar: user.rentCar });
+});
+
 // verify token 
 userAuthRouter.get('/verify_token', async (req, res) => {
+	console.log(req.headers);
+	const user = 'bob';
 	const token = req.headers['x-access-token'];
 	if (!token) {
 		res.send({ auth: false, message: 'Prease give a token' });
