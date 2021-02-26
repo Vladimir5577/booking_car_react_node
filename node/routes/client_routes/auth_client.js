@@ -35,15 +35,15 @@ userAuthRouter.post('/client_login', async (req, res) => {
 
 	// Check if user exist
 	const user = await User.findOne({ email: req.body.email });
-	if (!user) return res.send({ message: 'User not found' });
+	if (!user) return res.send({ errorMessage: 'User not found' });
 
 	// Verify password
 	const validPassword = await bcrypt.compare(req.body.password, user.password);
-	if (!validPassword) return res.send({ message: 'Wrong Password' });
+	if (!validPassword) return res.send({ errorMessage: 'Wrong Password' });
 
 	// Create and assign token
 	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-	res.send({ auth: true, token: token, message: 'You are logged in !', userName: user.name, userEmail: user.email, userRentCar: user.rentCar });
+	res.send({ auth: true, token: token, message: 'You are logged in !', userName: user.name, userEmail: user.email, userRentCar: user.rentCar, errorMessage: ''  });
 });
 
 // verify token 

@@ -78,7 +78,11 @@ const LayoutClient = props => {
 					</div>*/}
 
 					<Switch>
-						<Route exec path={`${path}/`} component={() => <MainClient  userLoginStatus={props.userLoginStatus} setUserLoginStatus={props.setUserLoginStatus} user={props.user} /> } ></Route>
+						<Route exec path={`${path}/`} component={() => <MainClient  
+								userLoginStatus={props.userLoginStatus} 
+								setUserLoginStatus={props.setUserLoginStatus} 
+								user={props.user}
+							/> } ></Route>
 						<Route path={`${path}home`} component={ HomeClient } ></Route>
 						<Route path={`${path}about`} component={ AboutClient } ></Route>
 						<Route path={`${path}contacts`} component={ ContactsClient } ></Route>
