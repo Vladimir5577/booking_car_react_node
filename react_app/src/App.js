@@ -28,15 +28,16 @@ function App() {
 	const [loginStatus, setLoginStatus] = useState(false);
 	const [userLoginStatus, setUserLoginStatus] = useState(false);
 	const [user, setUser] = useState({});
+	
 
 	// check login status admin
 	useEffect(() => {
-/*
+
 		// Check login
 		const checkLoginAdmin = () => {
 			const authResponse = axios.get('http://localhost:3001/admin/auth/verify_token', {
 				headers: {
-					'x-access-token': localStorage.getItem('token')
+					'x-access-token': localStorage.getItem('admin_token')
 				}
 			}).then((response) => {
 				console.log(response.data.auth, 'auth from Promise');
@@ -45,7 +46,7 @@ function App() {
 		};
 
 		checkLoginAdmin();
-*/
+
 			// Check login User
 			const checkLoginUser = () => {
 			const authResponse = axios.get('http://localhost:3001/client/auth/verify_token', {
@@ -65,14 +66,13 @@ function App() {
 		checkLoginUser();
 
 		
-	}, []);
-
+	}, []); 
 
   return (
   	<Router>
 	    <div className="App">
 		    <Switch>
-		    	<Route path="/" exact component={ () => <LayoutClient userLoginStatus={userLoginStatus} setUserLoginStatus={setUserLoginStatus} user={user} /> } />
+		    	<Route path="/" exact component={ () => <LayoutClient userLoginStatus={userLoginStatus} setUserLoginStatus={setUserLoginStatus} user={user}  /> } />
 		     	{/*<SecureRoute path="/admin" component={ LayoutAdmin } />*/}
 		     	<Route path="/admin/login" component={ () => <LoginAdmin loginStatus={loginStatus} setLoginStatus={setLoginStatus}  /> } />
 		     	<Route exect path="/admin" component={ () => <LayoutAdmin loginStatus={loginStatus} setLoginStatus={setLoginStatus} /> } />

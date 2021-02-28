@@ -26,6 +26,14 @@ carAdminRouter.get('/get_cars',  async (req, res) => {
 	res.send(cars);
 });
 
+// Get one car by id
+carAdminRouter.get('/get_car/:id', async (req, res) => {
+	console.log(req.params.id);
+	const car = await Car.findById(req.params.id);
+	console.log(car);
+	res.send('Car by id');
+});
+
 // add a car
 carAdminRouter.post('/add_car', async (req, res) => {
 	// console.log(req.body);

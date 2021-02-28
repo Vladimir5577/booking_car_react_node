@@ -18,7 +18,7 @@ const LoginAdmin = props => {
 			if (response.data.auth) {
 				setAdminLoginStatus(true);
 				props.setLoginStatus(response.data.auth);
-				localStorage.setItem('token', response.data.token);
+				localStorage.setItem('admin_token', response.data.token);
 			}
 			console.log(response.data);
 		});

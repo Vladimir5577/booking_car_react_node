@@ -23,4 +23,14 @@ router.get('/rented_car', async (req, res) => {
 	res.send('rented car');
 });
 
+// booking a car
+router.patch('/remove_rented_car', async (req, res) => {
+	const user = await User.findOneAndUpdate({ email: req.body.userEmail }, {
+		rentCar: ''
+	});
+
+	res.json({ message: 'Car booked successfully' });
+});
+
+
 module.exports = router;

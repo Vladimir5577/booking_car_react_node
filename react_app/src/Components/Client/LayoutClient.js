@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
 
 import MainClient from './MainClient';
@@ -11,6 +12,8 @@ const LayoutClient = props => {
 
 	const { url, path } = useRouteMatch();
 	let loginButton;
+	// const userRentCar = props.userRentCar;
+	const [userRentCar, setUserRentCar] = useState(localStorage.getItem('userRentCar'));
 
 	const logout = () => {
 		localStorage.clear();
@@ -82,6 +85,9 @@ const LayoutClient = props => {
 								userLoginStatus={props.userLoginStatus} 
 								setUserLoginStatus={props.setUserLoginStatus} 
 								user={props.user}
+								userRentCar={props.userRentCar}
+								userRentCar={userRentCar}
+		    					setUserRentCar={setUserRentCar}
 							/> } ></Route>
 						<Route path={`${path}home`} component={ HomeClient } ></Route>
 						<Route path={`${path}about`} component={ AboutClient } ></Route>

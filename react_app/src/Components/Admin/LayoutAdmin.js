@@ -17,7 +17,7 @@ function LayoutAdmin (props) {
 	};
 
 	const logout = () => {
-		localStorage.clear()
+		localStorage.removeItem('admin_token')
 	    props.setLoginStatus(false);
 	};
 
